@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: Аналитика
+  description: Сбор и выдача аналитики.
+  version: "0.1"
+servers:
+  - url: 'http://example.org/'
+    description: Основной сервис аналитики
+paths:
+  /analytics/events/{id}:
+    get:
+      summary: Аналитика по событию
+      description: Выдаёт аналитику по событию.
+      responses:
+        '200':
+          description: Успешный ответ.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Идентификатор мероприятия
+  /analytics/tickets/{eventId}:
+    get:
+      summary: Аналитика по продажам билетов для события
+      description: Выдаёт аналитику по продажам билетов для события.
+      responses:
+        '200':
+          description: JSON-объект
+      parameters:
+        - in: path
+          name: eventId
+          schema:
+            type: integer
+          required: true
+          description: Идентификатор мероприятия
+  /analytics/users/{userId}:
+    get:
+      summary: Статистика активности пользователя
+      responses:
+        '200':
+          description: JSON-объект
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: integer
+          required: true
+          description: Идентификатор пользователя
