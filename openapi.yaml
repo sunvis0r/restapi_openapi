@@ -29,6 +29,9 @@ paths:
             type: integer
           required: true
           description: Идентификатор мероприятия
+      security:
+        - OAuth2Schema:
+          - read_events_analytics
   /analytics/tickets/{eventId}:
     get:
       summary: Аналитика по продажам билетов для события
@@ -51,6 +54,9 @@ paths:
             type: integer
           required: true
           description: Идентификатор мероприятия
+      security:
+        - OAuth2Schema:
+          - read_tickets_analytics
   /analytics/users/{userId}:
     get:
       summary: Статистика активности пользователя
@@ -72,9 +78,23 @@ paths:
             type: integer
           required: true
           description: Идентификатор пользователя
+      security:
+        - OAuth2Schema:
+          - read_users_analytics
 components:
   responses:
     UnauthorizedError:
       description: Токен авторизации отсутствует или не является корректным.
     TooManyRequestsError:
       description: Слишком частые запросы.
+  securitySchemes:
+    OAuth2Schema:
+      type: oauth2
+      description: Используется аутентификация OAuth 2.
+      flows:
+        implicit:
+          authorizationUrl: https://example.org/oauth2/authorize
+          scopes:
+            read_users_analytics: Чтение аналитики о пользователях
+            read_tickets_analytics: Чтение аналитики о билетах
+            read_events_analytics: Чтение аналитики о мероприятиях
