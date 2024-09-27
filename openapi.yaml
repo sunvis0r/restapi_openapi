@@ -13,7 +13,15 @@ paths:
       description: Выдаёт аналитику по событию.
       responses:
         '200':
-          description: Успешный ответ.
+          description: JSON-объект.
+        '400':
+          description: Некорректный идентификатор. # Если вместо числа передана строка
+        '403':
+          description: Нет авторизации.
+        '404':
+          description: Мероприятие с таким идентификатором не найдено.
+        '429':
+          description: Слишком частые запросы.
       parameters:
         - in: path
           name: id
@@ -27,7 +35,15 @@ paths:
       description: Выдаёт аналитику по продажам билетов для события.
       responses:
         '200':
-          description: JSON-объект
+          description: JSON-объект.
+        '400':
+          description: Некорректный идентификатор. # Если вместо числа передана строка
+        '403':
+          description: Нет авторизации.
+        '404':
+          description: Мероприятие с таким идентификатором не найдено.
+        '429':
+          description: Слишком частые запросы.
       parameters:
         - in: path
           name: eventId
@@ -40,7 +56,15 @@ paths:
       summary: Статистика активности пользователя
       responses:
         '200':
-          description: JSON-объект
+          description: JSON-объект.
+        '400':
+          description: Некорректный идентификатор. # Если вместо числа передана строка
+        '403':
+          description: Нет авторизации.
+        '404':
+          description: Пользователь с таким идентификатором не найден.
+        '429':
+          description: Слишком частые запросы.
       parameters:
         - in: path
           name: userId
