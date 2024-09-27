@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Аналитика
   description: Сбор и выдача аналитики.
-  version: "0.1"
+  version: "0.2"
 servers:
   - url: 'http://example.org/'
     description: Основной сервис аналитики
@@ -14,6 +14,15 @@ paths:
       responses:
         '200':
           description: JSON-объект.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count: # = `{ "count": 12 }`
+                    type: integer
+                    format: int32
+                    minimum: 0
         '400':
           description: Некорректный идентификатор. # Если вместо числа передана строка
         '403':
@@ -27,6 +36,7 @@ paths:
           name: id
           schema:
             type: integer
+            format: int32
           required: true
           description: Идентификатор мероприятия
       security:
@@ -39,6 +49,15 @@ paths:
       responses:
         '200':
           description: JSON-объект.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count: # = `{ "count": 12 }`
+                    type: integer
+                    format: int32
+                    minimum: 0
         '400':
           description: Некорректный идентификатор. # Если вместо числа передана строка
         '403':
@@ -52,6 +71,7 @@ paths:
           name: eventId
           schema:
             type: integer
+            format: int32
           required: true
           description: Идентификатор мероприятия
       security:
@@ -63,6 +83,15 @@ paths:
       responses:
         '200':
           description: JSON-объект.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count: # = `{ "count": 12 }`
+                    type: integer
+                    format: int32
+                    minimum: 0
         '400':
           description: Некорректный идентификатор. # Если вместо числа передана строка
         '403':
@@ -76,6 +105,7 @@ paths:
           name: userId
           schema:
             type: integer
+            format: int32
           required: true
           description: Идентификатор пользователя
       security:
