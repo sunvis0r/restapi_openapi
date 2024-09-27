@@ -17,11 +17,11 @@ paths:
         '400':
           description: Некорректный идентификатор. # Если вместо числа передана строка
         '403':
-          description: Нет авторизации.
+          $ref: '#/components/responses/UnauthorizedError'
         '404':
           description: Мероприятие с таким идентификатором не найдено.
         '429':
-          description: Слишком частые запросы.
+          $ref: '#/components/responses/TooManyRequestsError'
       parameters:
         - in: path
           name: id
@@ -39,11 +39,11 @@ paths:
         '400':
           description: Некорректный идентификатор. # Если вместо числа передана строка
         '403':
-          description: Нет авторизации.
+          $ref: '#/components/responses/UnauthorizedError'
         '404':
           description: Мероприятие с таким идентификатором не найдено.
         '429':
-          description: Слишком частые запросы.
+          $ref: '#/components/responses/TooManyRequestsError'
       parameters:
         - in: path
           name: eventId
@@ -60,11 +60,11 @@ paths:
         '400':
           description: Некорректный идентификатор. # Если вместо числа передана строка
         '403':
-          description: Нет авторизации.
+          $ref: '#/components/responses/UnauthorizedError'
         '404':
           description: Пользователь с таким идентификатором не найден.
         '429':
-          description: Слишком частые запросы.
+          $ref: '#/components/responses/TooManyRequestsError'
       parameters:
         - in: path
           name: userId
@@ -72,3 +72,9 @@ paths:
             type: integer
           required: true
           description: Идентификатор пользователя
+components:
+  responses:
+    UnauthorizedError:
+      description: Токен авторизации отсутствует или не является корректным.
+    TooManyRequestsError:
+      description: Слишком частые запросы.
