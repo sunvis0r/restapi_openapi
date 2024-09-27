@@ -23,6 +23,7 @@ paths:
                     type: integer
                     format: int32
                     minimum: 0
+                    example: 328.36
         '400':
           description: Некорректный идентификатор. # Если вместо числа передана строка
         '403':
@@ -58,6 +59,7 @@ paths:
                     type: integer
                     format: int32
                     minimum: 0
+                    example: 328.36
         '400':
           description: Некорректный идентификатор. # Если вместо числа передана строка
         '403':
@@ -92,6 +94,7 @@ paths:
                     type: integer
                     format: int32
                     minimum: 0
+                    example: 328.36
         '400':
           description: Некорректный идентификатор. # Если вместо числа передана строка
         '403':
